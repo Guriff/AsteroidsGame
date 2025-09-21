@@ -16,7 +16,7 @@ AsteroidField.containers = (updatable,)
 asteroid_field = AsteroidField()
 
 
-a = Asteroid(100, 100, 30)
+
  
 def main():   
     pygame.init()
@@ -38,6 +38,15 @@ def main():
         
         # Update game state
         updatable.update(dt)
+
+        
+        for asteroid in asteroids:
+            if player.collides_with(asteroid):
+              print("Game over!")
+              pygame.display.flip()  # update screen one last time
+              pygame.time.delay(1000)  # wait 1 second so you can see the message
+              pygame.quit()
+              return
         
         # Render
         screen.fill("black")
