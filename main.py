@@ -4,7 +4,7 @@ from player import Player
 from asteroid import Asteroid
 
 
-
+shots = pygame.sprite.Group()
 asteroids = pygame.sprite.Group()
 updatable = pygame.sprite.Group()
 drawable = pygame.sprite.Group()
@@ -14,6 +14,8 @@ Asteroid.containers = (asteroids, updatable, drawable)
 from asteroidfield import AsteroidField
 AsteroidField.containers = (updatable,)
 asteroid_field = AsteroidField()
+from shot import Shot
+Shot.containers = (shots, updatable, drawable)
 
 
 
@@ -32,6 +34,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+            
         
         # Calculate dt for this frame
         dt = clock.tick(60) / 1000
