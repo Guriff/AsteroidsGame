@@ -50,7 +50,12 @@ def main():
               pygame.time.delay(1000)  # wait 1 second so you can see the message
               pygame.quit()
               return
-        
+        for asteroid in asteroids:
+            for shot in shots:
+                if shot.collides_with(asteroid):
+                    asteroid.kill()
+                    shot.kill()
+                    break  # no need to check other shots for this asteroid
         # Render
         screen.fill("black")
         for sprite in drawable:
